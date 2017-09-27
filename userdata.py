@@ -32,7 +32,7 @@ train.dropna(axis=0,inplace=True)
 bad_prov = train[['fdomicile_provice', 'dep']].groupby('fdomicile_provice').mean().\
 sort_values(by='dep')[-5:].index.tolist()
 train['dprov'] = train['fdomicile_provice'].isin(bad_prov).astype(int)
-#城市区间
+#按逾期率排序将城市归入10个区间
 percent = train[['fdomicile_city', 'dep']].groupby(['fdomicile_city'],as_index=True)\
 .mean().sort_values(by='dep')
 percent['dep2']= pd.cut(percent.dep, 10, labels=[0,1,2,3,4,5,6,7,8,9])
@@ -73,6 +73,7 @@ train['dtown'] = train['fdomicile_area'].apply(istown)
 #note null values：missing values would get interpreted as float and would raise the TypeError on iterating
 #map applymap
 train = train.drop('fdomicile_area',1)
+#train.drank0[train['dtown'] == 1] = 0如果是县城，drank=0 报错
 
 #Geogpraphic info: school---------------------------------
 #in high default rate province?
