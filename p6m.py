@@ -13,6 +13,7 @@ for chunk in reader:
 dep = pd.read_csv(r'E:\dep_mdl.csv', header=0, index_col=None, usecols=[0,1])
 #join data according to user ID
 train = pd.merge(p6m, dep, how='inner', on=['fuid_md5'])
+
 #fcredit_update_time
 train['fcredit_update_time'] = train['fcredit_update_time'].str.split(':').str.get(0)
 train['fcredit_update_time'] = pd.to_datetime(train['fcredit_update_time'],format='%d%b%y')
