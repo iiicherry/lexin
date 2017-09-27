@@ -1,250 +1,166 @@
-# lexin
-预测客户逾期
+# lexin 预测客户逾期
 https://www.nowcoder.com/activity/lexin2017/index
+时间原因，并未来得及参赛，但是希望是一个好的开始~
 
+数据介绍：
 用户信息（userdata）		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-fschoolarea_name_md5	string	MD5加密后学校完整名字
-fage	int	注册时点的年龄
-fsex	int	性别
-fis_entrance_exam	int	是否统招
-fregister_time	timestamp	注册时间
-fpocket_auth_time	timestamp	授信时间
-fdomicile_provice	string	籍贯省份
-fdomicile_city	string	籍贯城市
-fdomicile_area	string	籍贯县市
-sch_fprovince_name	string	学校省份
-sch_fcity_name	string	学校城市
-sch_fregion_name	string	学校县市
-sch_fcompany_name	string	学校片区名
-fstd_num	int	在校人数
-fcollege_level	string	学历
-fcal_graduation	string	预计毕业时间
-fauth_source_type	int	授信来源类型
+fuid_md5：MD5加密后用户ID
+fschoolarea_name_md5：MD5加密后学校完整名字
+fage：注册时点的年龄
+fsex：性别
+fis_entrance_exam：是否统招
+fregister_time：注册时间
+fpocket_auth_time：授信时间
+fdomicile_provice：籍贯省份
+fdomicile_city：籍贯城市
+fdomicile_area：籍贯县市
+sch_fprovince_name：学校省份
+sch_fcity_name：学校城市
+sch_fregion_name：学校县市
+sch_fcompany_name：学校片区名
+fstd_num：在校人数
+fcollege_level：学历
+fcal_graduation：预计毕业时间
+fauth_source_type：授信来源类型
 		
 过去六个月订单行为汇总（login）		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-pyear_month	string	观测月
-cyc_date	string	当前观测月应还款日
-od_cnt	bigint	当前观测月新建订单数
-actual_od_cnt	bigint	当前观测月新建非延期分期订单数
-virtual_od_cnt	bigint	当前观测月新建延期分期现金订单数
-od_3c_cnt	bigint	当前观测月新建3C类订单数
-od_bh_cnt	bigint	当前观测月新建百货类订单数
-od_yl_cnt	bigint	当前观测月新建娱乐类订单数
-od_xj_cnt	bigint	当前观测月新建现金类订单数
-od_ptsh_cnt	bigint	当前观测月新建普通商户类订单数
-od_zdfq_cnt	bigint	当前观测月新建账单分期类订单数
-od_xssh_cnt	bigint	当前观测月新建线上商户类订单数
-od_zdyq_cnt	bigint	当前观测月新建账单延期类订单数
-od_lh_new_cnt	bigint	当前观测月新建新乐花类订单数
-od_brw	bigint	当前观测月新建订单金额（分）(减首付后)
-actual_od_brw	bigint	当前观测月新建非延期分期订单金额（分）(减首付后)
-virtual_od_brw	bigint	当前观测月新建延期分期现金订单金额（分）(减首付后)
-od_3c_brw	bigint	当前观测月新建3C类订单金额（分）(减首付后)
-od_bh_brw	bigint	当前观测月新建百货类订单金额（分）(减首付后)
-od_yl_brw	bigint	当前观测月新建娱乐类订单金额（分）(减首付后)
-od_xj_brw	bigint	当前观测月新建现金类订单金额（分）(减首付后)
-od_ptsh_brw	bigint	当前观测月新建普通商户类订单金额（分）(减首付后)
-od_zdfq_brw	bigint	当前观测月新建账单分期类订单金额（分）(减首付后)
-od_xssh_brw	bigint	当前观测月新建线上商户类订单金额（分）(减首付后)
-od_zdyq_brw	bigint	当前观测月新建账单延期类订单金额（分）(减首付后)
-od_lh_new_brw	bigint	当前观测月新建新乐花类订单金额（分）(减首付后)
-cumu_od_cnt	bigint	历史存量创建订单数
-cumu_actual_od_cnt	bigint	历史存量创建非延期分期订单数
-cumu_virtual_od_cnt	bigint	历史存量创建延期分期现金订单数
-cumu_od_3c_cnt	bigint	历史存量创建3C类订单数
-cumu_od_bh_cnt	bigint	历史存量创建百货类订单数
-cumu_od_yl_cnt	bigint	历史存量创建娱乐类订单数
-cumu_od_xj_cnt	bigint	历史存量创建现金类订单数
-cumu_od_ptsh_cnt	bigint	历史存量创建普通商户类订单数
-cumu_od_zdfq_cnt	bigint	历史存量创建账单分期类订单数
-cumu_od_xssh_cnt	bigint	历史存量创建线上商户类订单数
-cumu_od_zdyq_cnt	bigint	历史存量创建账单延期类订单数
-cumu_od_lh_new_cnt	bigint	历史存量创建新乐花类订单数
-cumu_od_brw	bigint	历史存量创建订单金额（分）(减首付后)
-cumu_actual_od_brw	bigint	历史存量创建非延期分期订单金额（分）(减首付后)
-cumu_virtual_od_brw	bigint	历史存量创建延期分期现金订单金额（分）(减首付后)
-cumu_od_3c_brw	bigint	历史存量创建3C类订单金额（分）(减首付后)
-cumu_od_bh_brw	bigint	历史存量创建百货类订单金额（分）(减首付后)
-cumu_od_yl_brw	bigint	历史存量创建娱乐类订单金额（分）(减首付后)
-cumu_od_xj_brw	bigint	历史存量创建现金类订单金额（分）(减首付后)
-cumu_od_ptsh_brw	bigint	历史存量创建普通商户类订单金额（分）(减首付后)
-cumu_od_zdfq_brw	bigint	历史存量创建账单分期类订单金额（分）(减首付后)
-cumu_od_xssh_brw	bigint	历史存量创建线上商户类订单金额（分）(减首付后)
-cumu_od_zdyq_brw	bigint	历史存量创建账单延期类订单金额（分）(减首付后)
-cumu_od_lh_new_brw	bigint	历史存量创建新乐花类订单金额（分）(减首付后)
-payed_capital	bigint	截止到当前应还款日的已还本金（分）
-payed_actual_capital	bigint	截止到当前应还款日的已还实际现金本金（分）
-payed_virtual_capital	bigint	截止到当前应还款日的已还虚拟现金本金（分）
-payed_3c_capital	bigint	截止到当前应还款日的已还3C类订单本金（分）
-payed_bh_capital	bigint	截止到当前应还款日的已还百货类订单本金（分）
-payed_yl_capital	bigint	截止到当前应还款日的已还娱乐类订单本金（分）
-payed_xj_capital	bigint	截止到当前应还款日的已还现金类订单本金（分）
-payed_ptsh_capital	bigint	截止到当前应还款日的已还普通商户类订单本金（分）
-payed_zdfq_capital	bigint	截止到当前应还款日的已还账单分期类订单本金（分）
-payed_xssh_capital	bigint	截止到当前应还款日的已还线上商户类订单本金（分）
-payed_zdyq_capital	bigint	截止到当前应还款日的已还账单延期类订单本金（分）
-payed_lh_new_capital	bigint	截止到当前应还款日的已还新乐花类订单本金（分）
-payed_mon_fee	bigint	截止到当前应还款日的已还月服务费（分）
-payed_3c_mon_fee	bigint	截止到当前应还款日的已还3C类月服务费（分）
-payed_bh_mon_fee	bigint	截止到当前应还款日的已还百货类月服务费（分）
-payed_yl_mon_fee	bigint	截止到当前应还款日的已还娱乐类月服务费（分）
-payed_xj_mon_fee	bigint	截止到当前应还款日的已还现金类月服务费（分）
-payed_ptsh_mon_fee	bigint	截止到当前应还款日的已还普通商户类月服务费（分）
-payed_zdfq_mon_fee	bigint	截止到当前应还款日的已还账单分期类月服务费（分）
-payed_xssh_mon_fee	bigint	截止到当前应还款日的已还线上商户类月服务费（分）
-payed_zdyq_mon_fee	bigint	截止到当前应还款日的已还账单延期类月服务费（分）
-payed_lh_new_mon_fee	bigint	截止到当前应还款日的已还新乐花类月服务费（分）
-payed_tot_fee	bigint	截止到当前应还款日的已还总服务费（分）
-payed_3c_tot_fee	bigint	截止到当前应还款日的已还3C类总服务费（分）
-payed_bh_tot_fee	bigint	截止到当前应还款日的已还百货类总服务费（分）
-payed_yl_tot_fee	bigint	截止到当前应还款日的已还娱乐类总服务费（分）
-payed_xj_tot_fee	bigint	截止到当前应还款日的已还现金类总服务费（分）
-payed_ptsh_tot_fee	bigint	截止到当前应还款日的已还普通商户类总服务费（分）
-payed_zdfq_tot_fee	bigint	截止到当前应还款日的已还账单分期类总服务费（分）
-payed_xssh_tot_fee	bigint	截止到当前应还款日的已还线上商户类总服务费（分）
-payed_zdyq_tot_fee	bigint	截止到当前应还款日的已还账单延期类总服务费（分）
-payed_lh_new_tot_fee	bigint	截止到当前应还款日的已还新乐花类总服务费（分）
-bal	bigint	截止到当前应还款日的待还本金（分）
-ds3c_bal	bigint	截止到当前应还款日的待还3C类订单本金（分）
-bh_bal	bigint	截止到当前应还款日的待还百货类订单本金（分）
-yl_bal	bigint	截止到当前应还款日的待还娱乐类订单本金（分）
-xj_bal	bigint	截止到当前应还款日的待还现金类订单本金（分）
-ptsh_bal	bigint	截止到当前应还款日的待还普通商户类订单本金（分）
-zdfq_bal	bigint	截止到当前应还款日的待还账单分期类订单本金（分）
-xssh_bal	bigint	截止到当前应还款日的待还线上商户类订单本金（分）
-zdyq_bal	bigint	截止到当前应还款日的待还账单延期类订单本金（分）
-lh_new_bal	bigint	截止到当前应还款日的待还新乐花类订单本金（分）
-paying_mon_fee	bigint	截止到当前应还款日的应还服务费（分）
-ds3c_paying_mon_fee	bigint	截止到当前应还款日的应还3C类月服务费（分）
-bh_paying_mon_fee	bigint	截止到当前应还款日的应还百货类月服务费（分）
-yl_paying_mon_fee	bigint	截止到当前应还款日的应还娱乐类月服务费（分）
-xj_paying_mon_fee	bigint	截止到当前应还款日的应还现金类月服务费（分）
-ptsh_paying_mon_fee	bigint	截止到当前应还款日的应还普通商户类月服务费（分）
-zdfq_paying_mon_fee	bigint	截止到当前应还款日的应还账单分期类月服务费（分）
-xssh_paying_mon_fee	bigint	截止到当前应还款日的应还线上商户类月服务费（分）
-zdyq_paying_mon_fee	bigint	截止到当前应还款日的应还账单延期类月服务费（分）
-lh_new_paying_mon_fee	bigint	截止到当前应还款日的应还新乐花类月服务费（分）
-paying_tot_fee	bigint	截止到当前应还款日的应还本金（分）
-ds3c_paying_tot_fee	bigint	截止到当前应还款日的应还3C类总服务费（分）
-bh_paying_tot_fee	bigint	截止到当前应还款日的应还百货类总服务费（分）
-yl_paying_tot_fee	bigint	截止到当前应还款日的应还娱乐类总服务费（分）
-xj_paying_tot_fee	bigint	截止到当前应还款日的应还现金类总服务费（分）
-ptsh_paying_tot_fee	bigint	截止到当前应还款日的应还普通商户类总服务费（分）
-zdfq_paying_tot_fee	bigint	截止到当前应还款日的应还账单分期类总服务费（分）
-xssh_paying_tot_fee	bigint	截止到当前应还款日的应还线上商户类总服务费（分）
-zdyq_paying_tot_fee	bigint	截止到当前应还款日的应还账单延期类总服务费（分）
-lh_new_paying_tot_fee	bigint	截止到当前应还款日的应还新乐花类总服务费（分）
-paying_complete_od_cnt	bigint	截止到当前应还款日的应全部还完订单数
-payed_complete_od_cnt	bigint	截止到当前应还款日的已全部还完订单数
-payed_complete_actual_od_cnt	bigint	截止到当前应还款日的已全部实际现金还款还完订单数
-paying_complete_od_brw	bigint	截止到当前应还款日的应全部还完订单金额（分）
-payed_complete_od_brw	bigint	截止到当前应还款日的已全部还完订单金额（分）
-payed_complete_actual_od_brw	bigint	截止到当前应还款日的已全部实际现金还款还完订单金额（分）
-acre_repay_od_cnt	bigint	截止到当前应还款日的历史提前还款订单
-acre_repay_od_cpt	bigint	截止到当前应还款日的历史提前还款的本金金额（分）
-foverdue_paying_day	int	用户当前逾期天数
-foverdue_paying_cyc	bigint	用户当前逾期账期数
-foverdue_payed_day	int	用户历史逾期天数
-foverdue_payed_cyc	bigint	用户历史逾期账期数
-cpt_pymt	bigint	当前观测月还款额（分）
-credit_limit	double	当前观测月额度（分）
-fcredit_update_time	timestamp	额度更新时间
-futilization	double	额度使用率
-fopen_to_buy	bigint	剩余可用额度（分）
-		
-过去12个月月度订单金额		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-pyear_month	string	观测月
-cyc_date	string	当前观测月还款日
-od_brw	bigint	当前观测月新建订单金额（分）(减首付后)
-		
-过去六个月新增订单明细数据		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-forder_md5	string	MD5加密后订单号
-faccount_time	timestamp	订单账单创建时间
-forder_type	int	订单类型
-fsub_order_type	int	二级订单类型
-forder_state	int	订单状态
-fsale_type	int	交易类型
-fsku_id	string	商品sku码
-fproduct_info	string	商品信息
-ftotal_amount	bigint	订单金额（分）
-ftotal_firstpay	int	首付金额（分）
-ffirstpay_fee_type	int	首付选择方式
-fmax_fq_num	int	分期数
-		
-过去六个月用户场景行为信息		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-cyc_date	string	当前观测月还款日
-pyear_month	string	观测月
-c_log_eqp_dist_cnt	bigint	当前观测月，登录时使用的不同设备数
-c_scene_tot_cnt	bigint	当前观测月，浏览不同场景总次数
-c_scene_dist_cnt	bigint	当前观测月，浏览的不同场景个数
-c_scene_mac_dist_cnt	bigint	当前观测月，浏览使用的不同mac code数
-c_scene_chn_dist_cnt	bigint	当前观测月，浏览使用的不同channel数
-c_scene_ip_dist_cnt	bigint	当前观测月，浏览使用的不同ip数
-c_scene_ipprov_dist_cnt	bigint	当前观测月，浏览使用的ip对应的不同省份数
-c_scene_ipcity_dist_cnt	bigint	当前观测月，浏览使用的ip对应的不同城市个数
-c_scene_appsys_dist_cnt	bigint	当前观测月，浏览使用的不同APP系统数
-c_scene_wifi_dist_cnt	bigint	当前观测月，浏览使用的不同WiFi数
-c_scene_imei_dist_cnt	bigint	当前观测月，浏览使用的不同imei数
-c_scene_tot_days	bigint	当前观测月，有场景浏览的天数
-c_scene_reg_tot_cnt	bigint	当前观测月，场景为注册的次数
-c_scene_dl_tot_cnt	bigint	当前观测月，场景为登录的次数
-c_scene_od_tot_cnt	bigint	当前观测月，场景为下单的次数
-c_scene_rp_tot_cnt	bigint	当前观测月，场景为还款的次数
-c_scene_xgxx_tot_cnt	bigint	当前观测月，场景为修改信息的次数
-c_scene_plsp_tot_cnt	bigint	当前观测月，场景为评论商品的次数
-c_scene_sczl_tot_cnt	bigint	当前观测月，场景为上传资料的次数
-c_scene_sh_tot_cnt	bigint	当前观测月，场景为商户相关的次数
-c_scene_pc_tot_cnt	bigint	当前观测月，通过PC浏览的场景总次数
-c_scene_app_tot_cnt	bigint	当前观测月，通过APP浏览的场景总次数
-c_scene_h5_tot_cnt	bigint	当前观测月，通过H5浏览的场景总次数
-c_scene_android_tot_cnt	bigint	当前观测月，通过Android系统浏览的场景总次数
-c_scene_ios_tot_cnt	bigint	当前观测月，通过ios系统浏览的场景总次数
-c_scene_log_avg_dur	double	当前观测月，用户场景浏览所用的平均时长（秒）
-c_scene_log_max_dur	string	当前观测月，用户场景浏览所用的最大时长（秒）
-c_scene_log_min_dur	string	当前观测月，用户场景浏览所用的最小时长（秒）
-c_scene_reg_avg_dur	double	当前观测月，场景为注册的浏览平均时长（秒）      
-c_scene_dl_avg_dur	double	当前观测月，场景为登录的浏览平均时长（秒）      
-c_scene_od_avg_dur	double	当前观测月，场景为下单的浏览平均时长（秒）      
-c_scene_rp_avg_dur	double	当前观测月，场景为还款的浏览平均时长（秒）      
-c_scene_xgxx_avg_dur	double	当前观测月，场景为修改信息的浏览平均时长（秒）  
-c_scene_plsp_avg_dur	double	当前观测月，场景为评论商品的浏览平均时长（秒）  
-c_scene_sczl_avg_dur	double	当前观测月，场景为上传资料的浏览平均时长（秒）  
-c_scene_sh_avg_dur	double	当前观测月，场景为商户相关的浏览平均时长（秒）  
-c_scene_reg_max_dur	string	当前观测月，场景为注册的浏览最大时长（秒）    
-c_scene_dl_max_dur	string	当前观测月，场景为登录的浏览最大时长（秒）    
-c_scene_od_max_dur	string	当前观测月，场景为下单的浏览最大时长（秒）    
-c_scene_rp_max_dur	string	当前观测月，场景为还款的浏览最大时长（秒）    
-c_scene_xgxx_max_dur	string	当前观测月，场景为修改信息的浏览最大时长（秒）
-c_scene_plsp_max_dur	string	当前观测月，场景为评论商品的浏览最大时长（秒）
-c_scene_sczl_max_dur	string	当前观测月，场景为上传资料的浏览最大时长（秒）
-c_scene_sh_max_dur	string	当前观测月，场景为商户相关的浏览最大时长（秒）
-c_scene_reg_min_dur	string	当前观测月，场景为注册的浏览最小时长（秒）    
-c_scene_dl_min_dur	string	当前观测月，场景为登录的浏览最小时长（秒）    
-c_scene_od_min_dur	string	当前观测月，场景为下单的浏览最小时长（秒）    
-c_scene_rp_min_dur	string	当前观测月，场景为还款的浏览最小时长（秒）    
-c_scene_xgxx_min_dur	string	当前观测月，场景为修改信息的浏览最小时长（秒）
-c_scene_plsp_min_dur	string	当前观测月，场景为评论商品的浏览最小时长（秒）
-c_scene_sczl_min_dur	string	当前观测月，场景为上传资料的浏览最小时长（秒）
-c_scene_sh_min_dur	string	当前观测月，场景为商户相关的浏览最小时长（秒）
-		
+fuid_md5：MD5加密后用户ID
+pyear_month：观测月
+cyc_date：当前观测月应还款日
+od_cnt：当前观测月新建订单数
+actual_od_cnt：当前观测月新建非延期分期订单数
+virtual_od_cnt：当前观测月新建延期分期现金订单数
+od_3c_cnt：当前观测月新建3C类订单数
+od_bh_cnt：当前观测月新建百货类订单数
+od_yl_cnt：当前观测月新建娱乐类订单数
+od_xj_cnt：当前观测月新建现金类订单数
+od_ptsh_cnt：当前观测月新建普通商户类订单数
+od_zdfq_cnt：当前观测月新建账单分期类订单数
+od_xssh_cnt：当前观测月新建线上商户类订单数
+od_zdyq_cnt：当前观测月新建账单延期类订单数
+od_lh_new_cnt：当前观测月新建新乐花类订单数
+od_brw：当前观测月新建订单金额（分）(减首付后)
+actual_od_b：当前观测月新建延期分期现金订单金额（分）(减首付后)
+od_3c_brw：当前观测月新建3C类订单金额（分）(减首付后)
+od_bh_brw：当前观测月新建百货类订单金额（分）(减首付后)
+od_yl_brw：当前观测月新建娱乐类订单金额（分）(减首付后)
+od_xj_brw：当前观测月新建现金类订单金额（分）(减首付后)
+od_ptsh_brw：当前观测月新建普通商户类订单金额（分）(减首付后)
+od_zdfq_br：当前观测月新建账单分期类订单金额（分）(减首付后)
+od_xssh_brw：当前观测月新建线上商户类订单金额（分）(减首付后)
+od_zdyq_brw：当前观测月新建账单延期类订单金额（分）(减首付后)
+od_lh_new_brw：当前观测月新建新乐花类订单金额（分）(减首付后)
+cumu_od_cnt：历史存量创建订单数
+cumu_actual_od_cnt：历史存量创建非延期分期订单数
+cumu_virtual_od_cnt：历史存量创建延期分期现金订单数
+cumu_od_3c_cnt：历史存量创建3C类订单数
+cumu_od_bh_cnt：历史存量创建百货类订单数
+cumu_od_yl_cnt：历史存量创建娱乐类订单数
+cumu_od_xj_cnt：历史存量创建现金类订单数
+cumu_od_ptsh_cnt：历史存量创建普通商户类订单数
+cumu_od_zdfq_cnt：历史存量创建账单分期类订单数
+cumu_od_xssh_cnt：历史存量创建线上商户类订单数
+cumu_od_zdyq_cnt：历史存量创建账单延期类订单数
+cumu_od_lh_new_cnt：历史存量创建新乐花类订单数
+cumu_od_brw：历史存量创建订单金额（分）(减首付后)
+cumu_actual_od_brw：历史存量创建非延期分期订单金额（分）(减首付后)
+cumu_virtual_od_brw：历史存量创建延期分期现金订单金额（分）(减首付后)
+cumu_od_3c_brw：历史存量创建3C类订单金额（分）(减首付后)
+cumu_od_bh_brw：历史存量创建百货类订单金额（分）(减首付后)
+cumu_od_yl_brw：历史存量创建娱乐类订单金额（分）(减首付后)
+cumu_od_xj_brw：历史存量创建现金类订单金额（分）(减首付后)
+cumu_od_ptsh_brw：历史存量创建普通商户类订单金额（分）(减首付后)
+cumu_od_zdfq_brw：历史存量创建账单分期类订单金额（分）(减首付后)
+cumu_od_xssh_brw：历史存量创建线上商户类订单金额（分）(减首付后)
+cumu_od_zdyq_brw：历史存量创建账单延期类订单金额（分）(减首付后)
+cumu_od_lh_new_brw：历史存量创建新乐花类订单金额（分）(减首付后)
+payed_capital：截止到当前应还款日的已还本金（分）
+payed_actual_capital：截止到当前应还款日的已还实际现金本金（分）
+payed_virtual_capital：截止到当前应还款日的已还虚拟现金本金（分）
+payed_3c_capital：截止到当前应还款日的已还3C类订单本金（分）
+payed_bh_capital：截止到当前应还款日的已还百货类订单本金（分）
+payed_yl_capital：截止到当前应还款日的已还娱乐类订单本金（分）
+payed_xj_capital：截止到当前应还款日的已还现金类订单本金（分）
+payed_ptsh_capital：截止到当前应还款日的已还普通商户类订单本金（分）
+payed_zdfq_capital：截止到当前应还款日的已还账单分期类订单本金（分）
+payed_xssh_capital：截止到当前应还款日的已还线上商户类订单本金（分）
+payed_zdyq_capital：截止到当前应还款日的已还账单延期类订单本金（分）
+payed_lh_new_capital：截止到当前应还款日的已还新乐花类订单本金（分）
+payed_mon_fee：截止到当前应还款日的已还月服务费（分）
+payed_3c_mon_fee：截止到当前应还款日的已还3C类月服务费（分）
+payed_bh_mon_fee：截止到当前应还款日的已还百货类月服务费（分）
+payed_yl_mon_fee：截止到当前应还款日的已还娱乐类月服务费（分）
+payed_xj_mon_fee：截止到当前应还款日的已还现金类月服务费（分）
+payed_ptsh_mon_fee：截止到当前应还款日的已还普通商户类月服务费（分）
+payed_zdfq_mon_fee：截止到当前应还款日的已还账单分期类月服务费（分）
+payed_xssh_mon_fee：截止到当前应还款日的已还线上商户类月服务费（分）
+payed_zdyq_mon_fee：截止到当前应还款日的已还账单延期类月服务费（分）
+payed_lh_new_mon_fee：截止到当前应还款日的已还新乐花类月服务费（分）
+payed_tot_fee：截止到当前应还款日的已还总服务费（分）
+payed_3c_tot_fee：截止到当前应还款日的已还3C类总服务费（分）
+payed_bh_tot_fee：截止到当前应还款日的已还百货类总服务费（分）
+payed_yl_tot_fee：截止到当前应还款日的已还娱乐类总服务费（分）
+payed_xj_tot_fee：截止到当前应还款日的已还现金类总服务费（分）
+payed_ptsh_tot_fee：截止到当前应还款日的已还普通商户类总服务费（分）
+payed_zdfq_tot_fee：截止到当前应还款日的已还账单分期类总服务费（分）
+payed_xssh_tot_fee：截止到当前应还款日的已还线上商户类总服务费（分）
+payed_zdyq_tot_fee：截止到当前应还款日的已还账单延期类总服务费（分）
+payed_lh_new_tot_fee：截止到当前应还款日的已还新乐花类总服务费（分）
+bal：截止到当前应还款日的待还本金（分）
+ds3c_bal：截止到当前应还款日的待还3C类订单本金（分）
+bh_bal：截止到当前应还款日的待还百货类订单本金（分）
+yl_bal:截止到当前应还款日的待还娱乐类订单本金（分）
+xj_bal:截止到当前应还款日的待还现金类订单本金（分）
+ptsh_bal:截止到当前应还款日的待还普通商户类订单本金（分）
+zdfq_bal:截止到当前应还款日的待还账单分期类订单本金（分）
+xssh_bal:截止到当前应还款日的待还线上商户类订单本金（分）
+zdyq_bal:截止到当前应还款日的待还账单延期类订单本金（分）
+lh_new_bal:截止到当前应还款日的待还新乐花类订单本金（分）
+paying_mon_fee:截止到当前应还款日的应还服务费（分）
+ds3c_paying_mon_fee:截止到当前应还款日的应还3C类月服务费（分）
+bh_paying_mon_fee:截止到当前应还款日的应还百货类月服务费（分）
+yl_paying_mon_fee:截止到当前应还款日的应还娱乐类月服务费（分）
+xj_paying_mon_fee:截止到当前应还款日的应还现金类月服务费（分）
+ptsh_paying_mon_fee:截止到当前应还款日的应还普通商户类月服务费（分）
+zdfq_paying_mon_fee:截止到当前应还款日的应还账单分期类月服务费（分）
+xssh_paying_mon_fee:截止到当前应还款日的应还线上商户类月服务费（分）
+zdyq_paying_mon_fee:截止到当前应还款日的应还账单延期类月服务费（分）
+lh_new_paying_mon_fee:截止到当前应还款日的应还新乐花类月服务费（分）
+paying_tot_fee:截止到当前应还款日的应还本金（分）
+ds3c_paying_tot_fee:截止到当前应还款日的应还3C类总服务费（分）
+bh_paying_tot_fee:截止到当前应还款日的应还百货类总服务费（分）
+yl_paying_tot_fee:截止到当前应还款日的应还娱乐类总服务费（分）
+xj_paying_tot_fee:截止到当前应还款日的应还现金类总服务费（分）
+ptsh_paying_tot_fee:截止到当前应还款日的应还普通商户类总服务费（分）
+zdfq_paying_tot_fee:截止到当前应还款日的应还账单分期类总服务费（分）
+xssh_paying_tot_fee:截止到当前应还款日的应还线上商户类总服务费（分）
+zdyq_paying_tot_fee:截止到当前应还款日的应还账单延期类总服务费（分）
+lh_new_paying_tot_fee:截止到当前应还款日的应还新乐花类总服务费（分）
+paying_complete_od_cnt：截止到当前应还款日的应全部还完订单数
+payed_complete_od_cnt：截止到当前应还款日的已全部还完订单数
+payed_complete_actual_od_cnt：截止到当前应还款日的已全部实际现金还款还完订单数
+paying_complete_od_brw：截止到当前应还款日的应全部还完订单金额（分）
+payed_complete_od_brw：截止到当前应还款日的已全部还完订单金额（分）
+payed_complete_actual_od_brw：截止到当前应还款日的已全部实际现金还款还完订单金额（分）
+acre_repay_od_cnt：截止到当前应还款日的历史提前还款订单
+acre_repay_od_cpt：截止到当前应还款日的历史提前还款的本金金额（分）
+foverdue_paying_day：用户当前逾期天数
+foverdue_paying_cyc：用户当前逾期账期数
+foverdue_payed_day：用户历史逾期天数
+foverdue_payed_cyc：用户历史逾期账期数
+cpt_pymt：当前观测月还款额（分）
+credit_limit：当前观测月额度（分）
+fcredit_update_time：额度更新时间
+futilization：额度使用率
+fopen_to_buy：剩余可用额度（分）
+
 未来六个月的消费信息及dep		
-字段名	字段类型	字段释义
-fuid_md5	string	MD5加密后用户ID
-dep	int	未来6个月是否有过逾期3个账期以上
-actual_od_brw_f6m	bigint	未来6个月新建非延期分期总订单金额（分）
-actual_od_brw_1stm	bigint	未来第一月新建非延期分期订单金额（分）
-actual_od_brw_2stm	bigint	未来第二月新建非延期分期订单金额（分）
-actual_od_brw_3stm	bigint	未来第三月新建非延期分期订单金额（分）
-actual_od_brw_4stm	bigint	未来第四月新建非延期分期订单金额（分）
-actual_od_brw_5stm	bigint	未来第五月新建非延期分期订单金额（分）
-actual_od_brw_6stm	bigint	未来第六月新建非延期分期订单金额（分）
+fuid_md5：MD5加密后用户ID
+dep：未来6个月是否有过逾期3个账期以上
+actual_od_brw_f6m：未来6个月新建非延期分期总订单金额（分）
+actual_od_brw_1stm：未来第一月新建非延期分期订单金额（分）
+actual_od_brw_2stm：未来第二月新建非延期分期订单金额（分）
+actual_od_brw_3stm：未来第三月新建非延期分期订单金额（分）
+actual_od_brw_4stm：未来第四月新建非延期分期订单金额（分）
+actual_od_brw_5stm：未来第五月新建非延期分期订单金额（分）
+actual_od_brw_6stm：未来第六月新建非延期分期订单金额（分）
