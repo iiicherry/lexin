@@ -23,7 +23,7 @@ fcollege_level：学历
 fcal_graduation：预计毕业时间
 fauth_source_type：授信来源类型
 		
-过去六个月订单行为汇总（login）		
+过去六个月订单行为汇总（p6m）		
 fuid_md5：MD5加密后用户ID
 pyear_month：观测月
 cyc_date：当前观测月应还款日
