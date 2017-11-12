@@ -154,7 +154,7 @@ fcredit_update_time：额度更新时间 <br>
 futilization：额度使用率 <br>
 fopen_to_buy：剩余可用额度（分） <br>
  <br>
-###未来六个月的消费信息及dep <br>
+### 未来六个月的消费信息及dep
 fuid_md5：MD5加密后用户ID <br>
 dep：未来6个月是否有过逾期3个账期以上 <br>
 actual_od_brw_f6m：未来6个月新建非延期分期总订单金额（分） <br>
