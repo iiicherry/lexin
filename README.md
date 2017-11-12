@@ -1,59 +1,59 @@
 # lexin 预测客户逾期
-https://www.nowcoder.com/activity/lexin2017/index
-时间原因，并未来得及提交答案，但是希望是一个好的开始~
+https://www.nowcoder.com/activity/lexin2017/index  <br>
+时间原因，并未来得及提交答案，但是希望是一个好的开始~  <br>
 
-##数据介绍：\<br>
-###用户信息（userdata）\<br>	
-fuid_md5：MD5加密后用户ID\<br>
-fschoolarea_name_md5：MD5加密后学校完整名字\<br>
-fage：注册时点的年龄\<br>
-fsex：性别\<br>
-fis_entrance_exam：是否统招\<br>
-fregister_time：注册时间\<br>
-fpocket_auth_time：授信时间\<br>
-fdomicile_provice：籍贯省份\<br>
-fdomicile_city：籍贯城市\<br>
-fdomicile_area：籍贯县市\<br>
-sch_fprovince_name：学校省份\<br>
-sch_fcity_name：学校城市\<br>
-sch_fregion_name：学校县市\<br>
-sch_fcompany_name：学校片区名\<br>
-fstd_num：在校人数\<br>
-fcollege_level：学历\<br>
-fcal_graduation：预计毕业时间\<br>
-fauth_source_type：授信来源类型\<br>
+## 数据介绍：
+### 用户信息（userdata）
+fuid_md5：MD5加密后用户ID <br>
+fschoolarea_name_md5：MD5加密后学校完整名字 <br>
+fage：注册时点的年龄 <br>
+fsex：性别 <br>
+fis_entrance_exam：是否统招 <br>
+fregister_time：注册时间 <br>
+fpocket_auth_time：授信时间 <br>
+fdomicile_provice：籍贯省份 <br>
+fdomicile_city：籍贯城市 <br>
+fdomicile_area：籍贯县市 <br>
+sch_fprovince_name：学校省份 <br>
+sch_fcity_name：学校城市 <br>
+sch_fregion_name：学校县市 <br>
+sch_fcompany_name：学校片区名 <br>
+fstd_num：在校人数 <br>
+fcollege_level：学历 <br>
+fcal_graduation：预计毕业时间 <br>
+fauth_source_type：授信来源类型 <br>
 		
-###过去六个月订单行为汇总（p6m）\<br>		
-fuid_md5：MD5加密后用户ID\<br>
-pyear_month：观测月\<br>
-cyc_date：当前观测月应还款日\<br>
-od_cnt：当前观测月新建订单数\<br>
-actual_od_cnt：当前观测月新建非延期分期订单数\<br>
-virtual_od_cnt：当前观测月新建延期分期现金订单数\<br>
-od_3c_cnt：当前观测月新建3C类订单数\<br>
-od_bh_cnt：当前观测月新建百货类订单数\<br>
-od_yl_cnt：当前观测月新建娱乐类订单数\<br>
-od_xj_cnt：当前观测月新建现金类订单数\<br>
-od_ptsh_cnt：当前观测月新建普通商户类订单数\<br>
-od_zdfq_cnt：当前观测月新建账单分期类订单数\<br>
-od_xssh_cnt：当前观测月新建线上商户类订单数\<br>
-od_zdyq_cnt：当前观测月新建账单延期类订单数\<br>
-od_lh_new_cnt：当前观测月新建新乐花类订单数\<br>
-od_brw：当前观测月新建订单金额（分）(减首付后)\<br>
-actual_od_b：当前观测月新建延期分期现金订单金额（分）(减首付后)\<br>
-od_3c_brw：当前观测月新建3C类订单金额（分）(减首付后)\<br>
-od_bh_brw：当前观测月新建百货类订单金额（分）(减首付后)\<br>
-od_yl_brw：当前观测月新建娱乐类订单金额（分）(减首付后)\<br>
-od_xj_brw：当前观测月新建现金类订单金额（分）(减首付后)\<br>
-od_ptsh_brw：当前观测月新建普通商户类订单金额（分）(减首付后)\<br>
-od_zdfq_br：当前观测月新建账单分期类订单金额（分）(减首付后)\<br>
-od_xssh_brw：当前观测月新建线上商户类订单金额（分）(减首付后)\<br>
-od_zdyq_brw：当前观测月新建账单延期类订单金额（分）(减首付后)\<br>
-od_lh_new_brw：当前观测月新建新乐花类订单金额（分）(减首付后)\<br>
-cumu_od_cnt：历史存量创建订单数\<br>
-cumu_actual_od_cnt：历史存量创建非延期分期订单数\<br>
-cumu_virtual_od_cnt：历史存量创建延期分期现金订单数\<br>
-cumu_od_3c_cnt：历史存量创建3C类订单数\<br>
+### 过去六个月订单行为汇总（p6m）		
+fuid_md5：MD5加密后用户ID <br>
+pyear_month：观测月 <br>
+cyc_date：当前观测月应还款日 <br>
+od_cnt：当前观测月新建订单数 <br>
+actual_od_cnt：当前观测月新建非延期分期订单数 <br>
+virtual_od_cnt：当前观测月新建延期分期现金订单数 <br>
+od_3c_cnt：当前观测月新建3C类订单数 <br>
+od_bh_cnt：当前观测月新建百货类订单数 <br>
+od_yl_cnt：当前观测月新建娱乐类订单数 <br>
+od_xj_cnt：当前观测月新建现金类订单数 <br>
+od_ptsh_cnt：当前观测月新建普通商户类订单数 <br>
+od_zdfq_cnt：当前观测月新建账单分期类订单数 <br>
+od_xssh_cnt：当前观测月新建线上商户类订单数 <br>
+od_zdyq_cnt：当前观测月新建账单延期类订单数 <br>
+od_lh_new_cnt：当前观测月新建新乐花类订单数 <br>
+od_brw：当前观测月新建订单金额（分）(减首付后) <br>
+actual_od_b：当前观测月新建延期分期现金订单金额（分）(减首付后) <br>
+od_3c_brw：当前观测月新建3C类订单金额（分）(减首付后) <br>
+od_bh_brw：当前观测月新建百货类订单金额（分）(减首付后) <br>
+od_yl_brw：当前观测月新建娱乐类订单金额（分）(减首付后) <br>
+od_xj_brw：当前观测月新建现金类订单金额（分）(减首付后) <br>
+od_ptsh_brw：当前观测月新建普通商户类订单金额（分）(减首付后) <br>
+od_zdfq_br：当前观测月新建账单分期类订单金额（分）(减首付后) <br>
+od_xssh_brw：当前观测月新建线上商户类订单金额（分）(减首付后) <br>
+od_zdyq_brw：当前观测月新建账单延期类订单金额（分）(减首付后) <br>
+od_lh_new_brw：当前观测月新建新乐花类订单金额（分）(减首付后) <br>
+cumu_od_cnt：历史存量创建订单数 <br>
+cumu_actual_od_cnt：历史存量创建非延期分期订单数 <br>
+cumu_virtual_od_cnt：历史存量创建延期分期现金订单数 <br>
+cumu_od_3c_cnt：历史存量创建3C类订单数 <br>
 cumu_od_bh_cnt：历史存量创建百货类订单数\<br>
 cumu_od_yl_cnt：历史存量创建娱乐类订单数\<br>
 cumu_od_xj_cnt：历史存量创建现金类订单数\<br>
